@@ -1,8 +1,8 @@
-package project1.ver04;
+package project1.ver06;
 
 import java.util.Scanner;
 
-public class PhoneBookManager 
+public class PhoneBookManager implements SubMenuItem
 {
 	private int numOfPerson = 0;
 	private PhoneInfo[] pi;
@@ -37,9 +37,9 @@ public class PhoneBookManager
 		System.out.println("데이터 입력을 시작합니다.");
 		System.out.println("1. 일반\t2. 동창\t3. 회사");
 		System.out.print("선택 : ");
-		String choicePerson = sc.nextLine();
+		int choicePerson = sc.nextInt();
 
-		if (choicePerson.equals("1"))
+		if (choicePerson == GENERAL)
 		{
 			while (true)
 			{
@@ -66,7 +66,7 @@ public class PhoneBookManager
 			}
 			pi[numOfPerson++] = new PhoneInfo(inputName, inputPhoneNumber);
 
-		} else if (choicePerson.equals("2"))
+		} else if (choicePerson == FRIEND)
 		{
 			while (true)
 			{
@@ -97,7 +97,7 @@ public class PhoneBookManager
 			inputGrade = sc.nextInt();
 			PhoneSchoolInfo psi = new PhoneSchoolInfo(inputName, inputPhoneNumber, inputMajor, inputGrade);
 			pi[numOfPerson++] = psi;
-		} else if (choicePerson.equals("3"))
+		} else if (choicePerson == COMPANY)
 		{
 			while (true)
 			{

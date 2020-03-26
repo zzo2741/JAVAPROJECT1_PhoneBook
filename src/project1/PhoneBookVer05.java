@@ -3,8 +3,9 @@ package project1;
 import java.util.Scanner;
 
 import project1.ver05.PhoneBookManager;
+import project1.ver05.MenuItem;
 
-public class PhoneBookVer05
+public class PhoneBookVer05 implements MenuItem
 {
 	public static int SAVE_NUM = 100;
 
@@ -17,14 +18,14 @@ public class PhoneBookVer05
 			pbm.prtintMenu();
 			Scanner sc = new Scanner(System.in);
 			int choiceNum = sc.nextInt();
-			
+
 			switch (choiceNum)
 			{
-			case 1:
-				
+			case DATA_INPUT:
+
 				if (SAVE_NUM > pbm.getNumOfPerson())
 				{
-					
+
 					pbm.dataInput();
 				} else
 				{
@@ -35,19 +36,19 @@ public class PhoneBookVer05
 				}
 				break;
 
-			case 2:
+			case DATA_SEARCH:
 				pbm.dataSearch();
 				break;
 
-			case 3:
+			case DATA_DELETE:
 				pbm.dataDelete();
 				break;
 
-			case 4:
+			case DATA_ALL_SHOW:
 				pbm.dataAllShow();
 				break;
 
-			case 5:
+			case PROGRAM_EXIT:
 				System.out.println();
 				System.out.println("프로그램을 종료합니다.");
 				System.exit(0);

@@ -1,10 +1,13 @@
 package project1;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import project1.ver04.PhoneBookManager;
+import project1.ver06.PhoneBookManager;
+import project1.ver06.MenuItem;
+import project1.ver06.MenuSelectException;
 
-public class PhoneBookVer04 
+public class PhoneBookVer06 implements MenuItem
 {
 	public static int SAVE_NUM = 100;
 
@@ -14,13 +17,23 @@ public class PhoneBookVer04
 
 		while (true)
 		{
+
 			pbm.prtintMenu();
+			int choiceNum = 0;
 			Scanner sc = new Scanner(System.in);
-			int choiceNum = sc.nextInt();
+			try
+			{
+				choiceNum = sc.nextInt();
+
+			} catch (InputMismatchException e)
+			{
+				System.out.println("숫자를 입력해주세요.");
+				continue;
+			}
 
 			switch (choiceNum)
 			{
-			case 1:
+			case DATA_INPUT:
 
 				if (SAVE_NUM > pbm.getNumOfPerson())
 				{
@@ -35,25 +48,37 @@ public class PhoneBookVer04
 				}
 				break;
 
-			case 2:
+			case DATA_SEARCH:
 				pbm.dataSearch();
 				break;
 
-			case 3:
+			case DATA_DELETE:
 				pbm.dataDelete();
 				break;
 
-			case 4:
+			case DATA_ALL_SHOW:
 				pbm.dataAllShow();
 				break;
 
-			case 5:
+			case PROGRAM_EXIT:
 				System.out.println();
 				System.out.println("프로그램을 종료합니다.");
 				System.exit(0);
+
+			default:
+				if (choiceNum > 5 || choiceNum < 1)
+				{
+					MenuSelectException ex = new MenuSelectException();
+					try
+					{
+						throw ex;
+					} catch (MenuSelectException e)
+					{
+						// TODO Auto-generated catch block
+						System.out.println(e.getMessage());
+					}
+				}
 			}
 		}
-
 	}
-
 }

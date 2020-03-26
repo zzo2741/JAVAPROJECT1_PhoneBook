@@ -1,4 +1,4 @@
-package project1.ver05;
+package project1.ver07;
 
 public interface SubMenuItem
 {
