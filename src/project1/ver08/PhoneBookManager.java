@@ -1,12 +1,17 @@
-package project1.ver07;
+package project1.ver08;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class PhoneBookManager implements SubMenuItem
+public class PhoneBookManager implements SubMenuItem, Serializable
 {
 	HashSet<PhoneInfo> piSet;
 
@@ -22,7 +27,7 @@ public class PhoneBookManager implements SubMenuItem
 		System.out.println("2. 데이터 검색");
 		System.out.println("3. 데이터 삭제");
 		System.out.println("4. 주소록 출력");
-		System.out.println("5. 프로그램 종료");
+		System.out.println("5. 프로그램 저장 및 종료");
 		System.out.print("번호 입력 : ");
 	}
 
@@ -196,6 +201,44 @@ public class PhoneBookManager implements SubMenuItem
 			}
 		}
 
+	}
+
+	public void savePhoneInfo()
+	{
+		try
+		{
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(PROJECT_ADDRESS));
+
+			out.writeObject(piSet);
+
+			out.close();
+
+		} catch (Exception e)
+		{
+			System.out.println("예외 발생");
+			e.printStackTrace();
+		}
+	}
+
+	public void loadPhoneInfo()
+	{
+		try
+		{
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream(PROJECT_ADDRESS));
+
+			HashSet<PhoneInfo> hs = (HashSet<PhoneInfo>) in.readObject();
+			Iterator<PhoneInfo> it = hs.iterator();
+			while (it.hasNext())
+			{
+				it.next().showPhoneInfo();
+			}
+
+			in.close();
+		} catch (Exception e)
+		{
+			System.out.println("저장된 주소록을 불러올 수 없습니다.");
+			e.printStackTrace();
+		}
 	}
 
 }

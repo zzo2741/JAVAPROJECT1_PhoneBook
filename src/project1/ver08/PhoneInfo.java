@@ -1,6 +1,8 @@
-package project1.ver07;
+package project1.ver08;
 
-public class PhoneInfo
+import java.io.Serializable;
+
+public class PhoneInfo implements Serializable
 {
 	// 멤버 변수
 	protected String name;
