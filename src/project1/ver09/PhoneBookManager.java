@@ -180,7 +180,8 @@ public class PhoneBookManager extends ConnectImpl
 
 	public void createSeq()
 	{
-		try/		{
+		try
+		{
 			stmt = con.createStatement();
 			String createSeqSql = "create sequence seq_phonebook nocycle nocache";
 			stmt.execute(createSeqSql);
