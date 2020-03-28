@@ -101,8 +101,6 @@ public class PhoneBookManager implements SubMenuItem
 
 			}
 			break;
-		// piSet.add(new PhoneInfo(commonVar.get("name"),
-		// commonVar.get("phoneNumber")));
 
 		case FRIEND:
 			commonVar = commonVarInput();
@@ -149,7 +147,7 @@ public class PhoneBookManager implements SubMenuItem
 
 	}
 
-	public void dataAllShow()
+	public void dataAllShow()							
 	{
 		Iterator<PhoneInfo> it = piSet.iterator();
 		while (it.hasNext())

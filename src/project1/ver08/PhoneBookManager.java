@@ -216,7 +216,7 @@ public class PhoneBookManager implements SubMenuItem, Serializable
 		} catch (Exception e)
 		{
 			System.out.println("예외 발생");
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 
@@ -237,7 +237,7 @@ public class PhoneBookManager implements SubMenuItem, Serializable
 		} catch (Exception e)
 		{
 			System.out.println("저장된 주소록을 불러올 수 없습니다.");
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 
