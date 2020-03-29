@@ -56,11 +56,11 @@ public class ConnectImpl implements IConnect
 			}
 			if (stmt != null)
 			{
-				psmt.close();
+				stmt.close();
 			}
 			if (csmt != null)
 			{
-				psmt.close();
+				csmt.close();
 			}
 			if (rs != null)
 			{
