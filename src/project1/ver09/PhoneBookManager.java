@@ -5,7 +5,6 @@ import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
@@ -104,7 +103,6 @@ public class PhoneBookManager extends ConnectImpl
 			psmt.executeUpdate();
 			System.out.println("저장하였습니다.");
 
-
 		} catch (Exception e)
 		{
 			System.out.println("저장 실패");
@@ -124,7 +122,7 @@ public class PhoneBookManager extends ConnectImpl
 
 			stmt = con.createStatement();
 
-			rs = stmt.executeQuery(String.format("SELECT name, phonenumber, birthday FROM phonebook_tb WHERE name = '%s'", searchName));
+			rs = stmt.executeQuery(String.format("SELECT name, phonenumber, birthday FROM phonebook_tb WHERE name like '%s'", searchName));
 			while (rs.next())
 			{
 				String name = rs.getString("name");
