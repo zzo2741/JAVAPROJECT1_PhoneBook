@@ -208,7 +208,7 @@ public class PhoneBookManager implements SubMenuItem, Serializable
 		try
 		{
 			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(PROJECT_ADDRESS));
-
+			System.out.println(piSet);
 			out.writeObject(piSet);
 
 			out.close();

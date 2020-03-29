@@ -96,7 +96,6 @@ public class PhoneBookManager extends ConnectImpl
 
 			DateFormat formatter = new SimpleDateFormat("yymmdd");
 			Date date = formatter.parse(inputBirthday);
-
 			java.sql.Date sDate = new java.sql.Date(date.getTime());
 
 			psmt.setString(1, inputName);
